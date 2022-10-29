@@ -17,7 +17,7 @@ JContainers_JSON.Log(containerId, "Optional Description")
 ```
 }
 
-string function Serialize(int object)
+string function Serialize(int object) global
     if ! object
         return ""
     endIf
@@ -28,7 +28,7 @@ string function Serialize(int object)
     return json
 endFunction
 
-int function Parse(string json)
+int function Parse(string json) global
     if ! json
         return 0 
     endIf
@@ -39,7 +39,7 @@ int function Parse(string json)
     return object
 endFunction
 
-function Log(int object, string description = "")
+function Log(int object, string description = "") global
     if description
         Debug.Trace(description + ": (" + object + ") :" + Serialize(object)) 
     else
